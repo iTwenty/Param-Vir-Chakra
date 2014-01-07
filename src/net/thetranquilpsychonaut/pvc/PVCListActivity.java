@@ -21,7 +21,7 @@ public class PVCListActivity extends ListActivity
         setContentView( R.layout.main );
         recipients.add( Recipients.one );
         recipients.add( Recipients.two );
-        ListAdapter adapter = new ArrayAdapter<PVCRecipient>( this, android.R.layout.simple_list_item_1, recipients );
+        PVCListAdapter adapter = new PVCListAdapter( this, R.layout.pvc_list_row, recipients );
         setListAdapter( adapter );
     }
 }
