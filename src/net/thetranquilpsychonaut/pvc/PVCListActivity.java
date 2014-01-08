@@ -16,7 +16,7 @@ public class PVCListActivity extends ListActivity
     {
         Recipients.addRecipients( );
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.main );
+        setContentView( R.layout.pvc_list_activity );
         PVCListAdapter adapter = new PVCListAdapter( this, R.layout.pvc_list_row );
         setListAdapter( adapter );
     }

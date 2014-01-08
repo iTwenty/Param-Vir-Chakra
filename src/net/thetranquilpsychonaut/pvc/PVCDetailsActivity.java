@@ -14,12 +14,9 @@ public class PVCDetailsActivity extends Activity
     public void onCreate( Bundle savedInstanceState )
     {
         super.onCreate( savedInstanceState );
-        //setContentView( R.layout.pvc_details_activity );
+        setContentView( R.layout.pvc_details_activity );
         Intent intent = getIntent( );
         int position = intent.getIntExtra( Helper.SELECTED_RECIPIENT, 0 );
         selectedRecipient = Recipients.recipients.get( position );
-        TextView tv = new TextView( this );
-        tv.setText( selectedRecipient.getName( ) );
-        setContentView( tv);
     }
 }
