@@ -7,6 +7,6 @@ import java.text.SimpleDateFormat;
  */
 public class Helper
 {
-    public static String SELECTED_PVC = "net.thetranquilpsychonaut.pvc.selectedPVC";
-    public static SimpleDateFormat formatter = new SimpleDateFormat( "dd-MMM-yyyy" );
+    public static String           SELECTED_RECIPIENT = "net.thetranquilpsychonaut.pvc.selectedPVC";
+    public static SimpleDateFormat formatter          = new SimpleDateFormat( "dd-MMM-yyyy" );
 }

@@ -10,14 +10,16 @@ import android.widget.TextView;
  */
 public class PVCDetailsActivity extends Activity
 {
+    PVCRecipient selectedRecipient;
     public void onCreate( Bundle savedInstanceState )
     {
         super.onCreate( savedInstanceState );
         //setContentView( R.layout.pvc_details_activity );
         Intent intent = getIntent( );
-        int position = intent.getIntExtra( Helper.SELECTED_PVC, 0 );
+        int position = intent.getIntExtra( Helper.SELECTED_RECIPIENT, 0 );
+        selectedRecipient = Recipients.recipients.get( position );
         TextView tv = new TextView( this );
-        tv.setText( Recipients.recipients.get( position ).getName( ) );
+        tv.setText( selectedRecipient.getName( ) );
         setContentView( tv);
     }
 }
