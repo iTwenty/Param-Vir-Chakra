@@ -9,19 +9,26 @@
                android:layout_width="50dp"
                android:layout_height="50dp"/>
 
-    <TextView android:layout_width="30dp"
+    <TextView android:id="@+id/tv_posthumous"
+              android:layout_width="30dp"
               android:layout_height="50dp"
-              android:layout_alignParentRight="true"/>
+              android:layout_alignParentRight="true"
+              android:textColor="@color/red"
+              android:textStyle="bold"
+              android:gravity="center"/>
 
     <TextView android:id="@+id/tv_name"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:layout_toRightOf="@id/iv_thumbnail"/>
+              android:textStyle="bold"
+              android:layout_toRightOf="@id/iv_thumbnail"
+              android:layout_toLeftOf="@id/tv_posthumous"/>
 
     <TextView android:id="@+id/tv_awardDate"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_toRightOf="@id/iv_thumbnail"
+              android:layout_toLeftOf="@id/tv_posthumous"
               android:layout_below="@id/tv_name"/>
 
 </RelativeLayout>

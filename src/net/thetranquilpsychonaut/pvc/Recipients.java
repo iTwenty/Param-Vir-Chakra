@@ -14,7 +14,7 @@ public class Recipients
         "Som Nath Sharma",
         "IC-521",
         "4th Battalion, Kumaon Regiment",
-        new GregorianCalendar( 1971, Calendar.NOVEMBER, 3 ),
+        new GregorianCalendar( 1947, Calendar.NOVEMBER, 3 ),
         "Badgam, Kashmir",
         Boolean.TRUE,
         new GregorianCalendar( 1923, Calendar.JANUARY, 31 ),

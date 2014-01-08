@@ -32,6 +32,7 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
         ImageView ivThumbnail;
         TextView  tvName;
         TextView  tvAwardDate;
+        TextView  tvPosthumous;
     }
 
     @Override
@@ -48,6 +49,7 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
             holder.ivThumbnail = ( ImageView ) view.findViewById( R.id.iv_thumbnail );
             holder.tvName = ( TextView ) view.findViewById( R.id.tv_name );
             holder.tvAwardDate = ( TextView ) view.findViewById( R.id.tv_awardDate );
+            holder.tvPosthumous = ( TextView ) view.findViewById( R.id.tv_posthumous );
             view.setTag( holder );
         }
         else
@@ -57,6 +59,7 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
         holder.tvName.setText( recipient.getRank( ) + " " + recipient.getName( ) );
         holder.tvAwardDate.setText( Helper.formatter.format( recipient.getAwardDate( ).getTime( ) ) );
         holder.ivThumbnail.setImageDrawable( ctx.getResources( ).getDrawable( recipient.getImageID( ) ) );
+        holder.tvPosthumous.setText( recipient.isPosthumous( ) ? "P" : "" );
         return view;
     }
 }
