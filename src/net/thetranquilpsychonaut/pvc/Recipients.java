@@ -9,7 +9,8 @@ import java.util.GregorianCalendar;
  */
 public class Recipients
 {
-    public static PVCRecipient one  = new PVCRecipient(
+    public static ArrayList<PVCRecipient> recipients = new ArrayList<PVCRecipient>( );
+    static PVCRecipient one = new PVCRecipient(
         "Major",
         "Som Nath Sharma",
         "IC-521",
@@ -36,7 +37,7 @@ public class Recipients
         R.drawable.major_somnath_sharma
     );
 
-    public static PVCRecipient two = new PVCRecipient(
+    static PVCRecipient two = new PVCRecipient(
         "Lance Naik",
         "Karam Singh",
         "IC-22356",
@@ -58,4 +59,10 @@ public class Recipients
             "Lance Naik Karam Singh proved himself to be a dauntless leader of men in crisis. Nothing could subdue him and no amount of fire or hardship could break his spirit.",
         R.drawable.lance_naik_karam_singh
     );
+
+    public static void addRecipients( )
+    {
+        recipients.add( one );
+        recipients.add( two );
+    }
 }

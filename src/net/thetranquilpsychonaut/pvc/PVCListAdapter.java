@@ -18,13 +18,11 @@ import java.util.ArrayList;
 public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
 {
     Context ctx;
-    ArrayList<PVCRecipient> recipients;
 
-    public PVCListAdapter( Context context, int textViewResourceId,  ArrayList<PVCRecipient> recipients )
+    public PVCListAdapter( Context context, int textViewResourceId )
     {
-        super( context, textViewResourceId, recipients );
+        super( context, textViewResourceId, Recipients.recipients );
         this.ctx = context;
-        this.recipients = recipients;
     }
 
     private class ViewHolder
@@ -40,7 +38,7 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
     {
         View view = convertView;
         ViewHolder holder;
-        PVCRecipient recipient = recipients.get( position );
+        PVCRecipient recipient = Recipients.recipients.get( position );
         LayoutInflater inflater = ( LayoutInflater ) ctx.getSystemService( Activity.LAYOUT_INFLATER_SERVICE );
         if ( view == null )
         {
