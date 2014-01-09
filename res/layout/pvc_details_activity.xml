@@ -4,4 +4,139 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <View
+        android:id="@+id/strut"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_image" />
+
+    <TextView
+        android:id="@+id/tv_lifespan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_birth_place_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_lifespan"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_birth_place"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_lifespan"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/spr_award_details"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:text="@string/award_details"
+        android:layout_below="@+id/tv_birth_place"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_award_number_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spr_award_details"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_award_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spr_award_details"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/tv_award_date_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_number_key"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_award_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_number"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/tv_award_place_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_date_key"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_award_place"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_date"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/tv_regiment_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_place_key"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_regiment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_award_place"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <TextView
+        android:id="@+id/spr_citation"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:text="@string/citation"
+        android:layout_below="@+id/tv_regiment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_citation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spr_citation"/>
+
 </RelativeLayout>
