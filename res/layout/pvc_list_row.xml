@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin_padding" >
 
-    <ImageView
-        android:id="@+id/iv_thumbnail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+    <LinearLayout
+        android:id="@+id/ll_list_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/image_padding"
+        android:background="@drawable/image_bg" >
+
+        <ImageView
+            android:id="@+id/iv_list_thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_posthumous"
-        android:layout_width="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:textColor="@color/red"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:gravity="center" />
 
     <TextView
-        android:id="@+id/tv_name"
+        style="@style/my_text_view"
+        android:id="@+id/tv_list_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_toRightOf="@id/iv_thumbnail"
-        android:layout_toLeftOf="@id/tv_posthumous"/>
+        android:layout_toRightOf="@id/ll_list_thumbnail"
+        android:layout_toLeftOf="@id/tv_posthumous"
+        android:padding="@dimen/textview_padding" />
 
     <TextView
-        android:id="@+id/tv_awardDate"
+        style="@style/my_text_view"
+        android:id="@+id/tv_list_award_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/iv_thumbnail"
+        android:layout_toRightOf="@id/ll_list_thumbnail"
         android:layout_toLeftOf="@id/tv_posthumous"
-        android:layout_below="@id/tv_name"/>
+        android:layout_below="@id/tv_list_name" />
 
 </RelativeLayout>

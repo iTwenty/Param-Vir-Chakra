@@ -9,9 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-
 /**
  * Created by itwenty on 1/5/14.
  */
@@ -44,9 +41,9 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
         {
             view = inflater.inflate( R.layout.pvc_list_row, null );
             holder = new ViewHolder();
-            holder.ivThumbnail = ( ImageView ) view.findViewById( R.id.iv_thumbnail );
-            holder.tvName = ( TextView ) view.findViewById( R.id.tv_name );
-            holder.tvAwardDate = ( TextView ) view.findViewById( R.id.tv_awardDate );
+            holder.ivThumbnail = ( ImageView ) view.findViewById( R.id.iv_list_thumbnail );
+            holder.tvName = ( TextView ) view.findViewById( R.id.tv_list_name );
+            holder.tvAwardDate = ( TextView ) view.findViewById( R.id.tv_list_award_date );
             holder.tvPosthumous = ( TextView ) view.findViewById( R.id.tv_posthumous );
             view.setTag( holder );
         }

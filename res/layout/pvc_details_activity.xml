@@ -1,49 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <!-- Strut to produce 50/50 layout split used further -->
     <View
         android:id="@+id/strut"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:id="@+id/iv_image"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true" />
+    <!-- Image -->
+
+    <LinearLayout
+        android:id="@+id/ll_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/image_padding"
+        android:background="@drawable/image_bg"
+        android:layout_centerHorizontal="true" >
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"/>
+
+    </LinearLayout>
+
+    <!-- Name -->
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_image" />
+        android:layout_below="@+id/ll_image"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Birth Date -->
 
     <TextView
-        android:id="@+id/tv_lifespan"
+        style="@style/my_text_view"
+        android:id="@+id/tv_birth_date_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_name" />
-
-    <TextView
-        android:id="@+id/tv_birth_place_key"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_lifespan"
+        android:layout_below="@+id/tv_name"
         android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_birth_date"/>
 
     <TextView
-        android:id="@+id/tv_birth_place"
+        style="@style/my_text_view"
+        android:id="@+id/tv_birth_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_lifespan"
+        android:layout_below="@+id/tv_name"
         android:layout_alignLeft="@id/strut"
         android:layout_alignParentRight="true"
         android:gravity="right" />
+
+    <!-- Death Date -->
+
+    <TextView
+        style="@style/my_text_view"
+        android:id="@+id/tv_death_date_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_birth_date"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_death_date"/>
+
+    <TextView
+        style="@style/my_text_view"
+        android:id="@+id/tv_death_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_birth_date"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <!-- Birth Place -->
+
+    <TextView
+        style="@style/my_text_view"
+        android:id="@+id/tv_birth_place_key"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_death_date"
+        android:layout_alignRight="@id/strut"
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_birth_place"/>
+
+    <TextView
+        style="@style/my_text_view"
+        android:id="@+id/tv_birth_place"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_death_date"
+        android:layout_alignLeft="@id/strut"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
+
+    <!-- Award Details separator -->
 
     <TextView
         android:id="@+id/spr_award_details"
@@ -55,15 +122,20 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Award Number -->
+
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_number_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spr_award_details"
         android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_award_number"/>
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -72,15 +144,20 @@
         android:layout_alignParentRight="true"
         android:gravity="right" />
 
+    <!-- Award Date -->
+
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_date_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_award_number_key"
         android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_award_date"/>
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -89,15 +166,20 @@
         android:layout_alignParentRight="true"
         android:gravity="right" />
 
+    <!-- Award Place -->
+
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_place_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_award_date_key"
         android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_award_place"/>
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_award_place"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -106,15 +188,20 @@
         android:layout_alignParentRight="true"
         android:gravity="right" />
 
+    <!-- Regiment -->
+
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_regiment_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_award_place_key"
         android:layout_alignRight="@id/strut"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/str_regiment"/>
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_regiment"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -122,6 +209,8 @@
         android:layout_alignLeft="@id/strut"
         android:layout_alignParentRight="true"
         android:gravity="right" />
+
+    <!-- Citation separator -->
 
     <TextView
         android:id="@+id/spr_citation"
@@ -134,9 +223,11 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        style="@style/my_text_view"
         android:id="@+id/tv_citation"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spr_citation"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_padding">5dip</dimen>
+    <dimen name="textview_padding">3dip</dimen>
+    <dimen name="image_padding">2dip</dimen>
+</resources>

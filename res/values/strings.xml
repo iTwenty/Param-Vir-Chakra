@@ -2,5 +2,12 @@
 <resources>
     <string name="app_name">Param Vir Chakra</string>
     <string name="award_details">Award Details</string>
-    <string name="citation">citation</string>
+    <string name="citation">Citation</string>
+    <string name="str_birth_date">Date of Birth</string>
+    <string name="str_death_date">Date of Death</string>
+    <string name="str_birth_place">Place of Birth</string>
+    <string name="str_award_number">Award Number</string>
+    <string name="str_award_date">Date of Award</string>
+    <string name="str_award_place">Place</string>
+    <string name="str_regiment">Regiment</string>
 </resources>
