@@ -27,6 +27,7 @@ public class PVCListActivity extends ListActivity
         super.onListItemClick( l, v, position, id );
         Intent intent = new Intent( this, PVCDetailsActivity.class );
         intent.putExtra( Helper.SELECTED_RECIPIENT, position );
+        intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
         startActivity( intent );
     }
 }

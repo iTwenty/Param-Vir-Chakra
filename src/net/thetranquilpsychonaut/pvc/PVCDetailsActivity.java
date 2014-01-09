@@ -13,6 +13,7 @@ import android.widget.Toast;
  */
 public class PVCDetailsActivity extends Activity
 {
+    int          position;
     PVCRecipient selectedRecipient;
     ImageView    ivImage;
     TextView     tvName;
@@ -30,7 +31,7 @@ public class PVCDetailsActivity extends Activity
         super.onCreate( savedInstanceState );
         setContentView( R.layout.pvc_details_activity );
         Intent intent = getIntent();
-        int position = intent.getIntExtra( Helper.SELECTED_RECIPIENT, 0 );
+        position = intent.getIntExtra( Helper.SELECTED_RECIPIENT, 0 );
         selectedRecipient = Recipients.recipients.get( position );
         ivImage = (ImageView)findViewById( R.id.iv_image );
         tvName = (TextView)findViewById( R.id.tv_name );
@@ -56,20 +57,5 @@ public class PVCDetailsActivity extends Activity
         tvAwardPlace.setText( selectedRecipient.getAwardPlace( ) );
         tvRegiment.setText( selectedRecipient.getRegiment( ) );
         tvCitation.setText( selectedRecipient.getCitation( ) );
-
-        RelativeLayout rlPVCDetailsActivity = ( RelativeLayout ) findViewById( R.id.rl_pvc_details_activity );
-        rlPVCDetailsActivity.setOnTouchListener( new OnSwipeTouchListener( ) {
-            @Override
-            public void onSwipeRight( )
-            {
-                Toast.makeText( PVCDetailsActivity.this, "Right", Toast.LENGTH_SHORT  ).show( );
-            }
-
-            @Override
-            public void onSwipeLeft( )
-            {
-                Toast.makeText( PVCDetailsActivity.this, "Left", Toast.LENGTH_SHORT  ).show( );
-            }
-        } );
     }
 }
