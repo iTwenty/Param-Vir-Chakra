@@ -3,6 +3,7 @@ package net.thetranquilpsychonaut.pvc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,5 +58,32 @@ public class PVCDetailsActivity extends Activity
         tvAwardPlace.setText( selectedRecipient.getAwardPlace( ) );
         tvRegiment.setText( selectedRecipient.getRegiment( ) );
         tvCitation.setText( selectedRecipient.getCitation( ) );
+    }
+
+    public void goToNextRecipient( View v )
+    {
+        if( position == Recipients.recipients.size( ) - 1 )
+            return;
+        else
+        {
+            Intent intent = new Intent( this, PVCDetailsActivity.class );
+            intent.putExtra( Helper.SELECTED_RECIPIENT, position + 1 );
+            intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
+            startActivity( intent );
+        }
+    }
+
+    public void goToPreviousRecipient( View v )
+    {
+        if( position == 0 )
+            return;
+        else
+        {
+            Intent intent = new Intent( this, PVCDetailsActivity.class );
+            intent.putExtra( Helper.SELECTED_RECIPIENT, position - 1 );
+            intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
+            startActivity( intent );
+        }
+
     }
 }

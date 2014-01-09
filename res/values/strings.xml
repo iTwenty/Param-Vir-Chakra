@@ -10,4 +10,6 @@
     <string name="str_award_date">Date of Award</string>
     <string name="str_award_place">Place</string>
     <string name="str_regiment">Regiment</string>
+    <string name="str_previous">Previous</string>
+    <string name="str_next">Next</string>
 </resources>

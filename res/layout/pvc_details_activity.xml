@@ -17,6 +17,24 @@
         android:layout_height="0dp"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/btn_prev"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/strut"
+        android:gravity="center"
+        android:text="@string/str_previous"
+        android:onClick="goToPreviousRecipient"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/strut"
+        android:gravity="center"
+        android:text="@string/str_next"
+        android:onClick="goToNextRecipient"/>
+
     <!-- Image -->
 
     <LinearLayout
@@ -25,6 +43,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/image_padding"
         android:background="@drawable/image_bg"
+        android:layout_below="@id/btn_prev"
         android:layout_centerHorizontal="true" >
 
         <ImageView
