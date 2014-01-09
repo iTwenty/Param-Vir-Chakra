@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by itwenty on 1/8/14.
@@ -54,5 +56,20 @@ public class PVCDetailsActivity extends Activity
         tvAwardPlace.setText( selectedRecipient.getAwardPlace( ) );
         tvRegiment.setText( selectedRecipient.getRegiment( ) );
         tvCitation.setText( selectedRecipient.getCitation( ) );
+
+        RelativeLayout rlPVCDetailsActivity = ( RelativeLayout ) findViewById( R.id.rl_pvc_details_activity );
+        rlPVCDetailsActivity.setOnTouchListener( new OnSwipeTouchListener( ) {
+            @Override
+            public void onSwipeRight( )
+            {
+                Toast.makeText( PVCDetailsActivity.this, "Right", Toast.LENGTH_SHORT  ).show( );
+            }
+
+            @Override
+            public void onSwipeLeft( )
+            {
+                Toast.makeText( PVCDetailsActivity.this, "Left", Toast.LENGTH_SHORT  ).show( );
+            }
+        } );
     }
 }
