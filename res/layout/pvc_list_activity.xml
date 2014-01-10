@@ -6,6 +6,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <TextView
+        android:id="@+id/tv_p_for_posthumous"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:gravity="center"
+        android:text="@string/str_p_for_posthumous"
+        android:layout_margin="@dimen/margin_padding"/>
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"

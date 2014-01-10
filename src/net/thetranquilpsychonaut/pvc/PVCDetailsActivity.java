@@ -57,7 +57,8 @@ public class PVCDetailsActivity extends Activity
                 "????" );
         tvBirthPlace.setText( selectedRecipient.getBirthPlace( ) );
         tvAwardNumber.setText( selectedRecipient.getAwardNumber( ) );
-        tvAwardDate.setText( Helper.formatter.format( selectedRecipient.getAwardDate( ).getTime( ) ) );
+        String posthumous = selectedRecipient.isPosthumous( ) ? "(posth.)" : "";
+        tvAwardDate.setText( Helper.formatter.format( selectedRecipient.getAwardDate( ).getTime( ) ) +" " + posthumous );
         tvAwardPlace.setText( selectedRecipient.getAwardPlace( ) );
         tvRegiment.setText( selectedRecipient.getRegiment( ) );
         tvCitation.setText( selectedRecipient.getCitation( ) );
