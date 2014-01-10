@@ -47,7 +47,10 @@ public class PVCDetailsActivity extends Activity
 
         ivImage.setImageDrawable( this.getResources( ).getDrawable( selectedRecipient.getImageID( ) ) );
         tvName.setText( selectedRecipient.getRank( ) + " " + selectedRecipient.getName( ) );
-        tvBirthDate.setText( Helper.formatter.format( selectedRecipient.getBirthDate( ).getTime( ) ) );
+        tvBirthDate.setText(
+            selectedRecipient.getBirthDate( ) != null ?
+                Helper.formatter.format( selectedRecipient.getBirthDate( ).getTime( ) ) :
+                "????" );
         tvDeathDate.setText(
             selectedRecipient.getDeathDate( ) != null ?
                 Helper.formatter.format( selectedRecipient.getDeathDate( ).getTime( ) ) :
