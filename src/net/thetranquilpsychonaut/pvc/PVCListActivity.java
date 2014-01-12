@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -26,7 +27,7 @@ public class PVCListActivity extends ListActivity
         super.onCreate( savedInstanceState );
         // Initialise our data sources before doing anything else.
         Recipients.fillMutableRecipientsList( );
-        Recipients.fillImmutableRecipientsList( );
+        Recipients.fillImmutableRecipientsList();
         setContentView( R.layout.pvc_list_activity );
         adapter = new PVCListAdapter( this, R.layout.pvc_list_row );
         setListAdapter( adapter );
@@ -53,6 +54,18 @@ public class PVCListActivity extends ListActivity
                 return true;
             }
         } );
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected( int featureId, MenuItem item )
+    {
+        int itemId = item.getItemId( );
+        if( itemId == R.id.menu_about )
+        {
+            Intent aboutIntent = new Intent( this, AboutActivity.class );
+            startActivity( aboutIntent );
+        }
         return true;
     }
 
