@@ -15,4 +15,14 @@
     <string name="str_p_for_posthumous">P means award was given posthumously</string>
     <string name="str_search">Search by name</string>
     <string name="str_about">About</string>
+    <string name="str_about_details">The Param Vir Chakra (PVC) is India\'s highest military decoration awarded for the
+        highest degree of valour or self-sacrifice in the presence of the enemy. It can be, and often has been, awarded
+        posthumously.\n
+        The award also carries a cash allowance for those under the rank of lieutenant (or the appropriate service
+        equivalent) and, in some cases, a cash award. By March 1999, the stipend stood at Rs. 1500 per month. In
+        addition, many states have established individual pension rewards that far exceeds the central government\'s
+        stipend for the recipients of the decoration.\n
+        \n
+        Email the developer: jaydeepmjoshi at gmail dot com
+    </string>
 </resources>
