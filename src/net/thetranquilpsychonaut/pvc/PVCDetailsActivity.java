@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by itwenty on 1/8/14.
@@ -31,9 +29,9 @@ public class PVCDetailsActivity extends Activity
     {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.pvc_details_activity );
-        Intent intent = getIntent();
+        Intent intent = getIntent( );
         position = intent.getIntExtra( Helper.SELECTED_RECIPIENT, 0 );
-        selectedRecipient = Recipients.recipients.get( position );
+        selectedRecipient = Recipients.immutableRecipientsList.get( position );
         ivImage = (ImageView)findViewById( R.id.iv_image );
         tvName = (TextView)findViewById( R.id.tv_name );
         tvBirthDate = (TextView)findViewById( R.id.tv_birth_date );
@@ -66,7 +64,7 @@ public class PVCDetailsActivity extends Activity
 
     public void goToNextRecipient( View v )
     {
-        if( position == Recipients.recipients.size( ) - 1 )
+        if( position == Recipients.immutableRecipientsList.size( ) - 1 )
             return;
         else
         {
@@ -88,6 +86,5 @@ public class PVCDetailsActivity extends Activity
             intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
             startActivity( intent );
         }
-
     }
 }

@@ -6,11 +6,22 @@ import java.util.GregorianCalendar;
 
 /**
  * Created by itwenty on 1/5/14.
+ * This class is the primary data source of the application.
+ * All the PVCRecipients and ArrayLists used throughout the app have a static declaration here.
  */
 public class Recipients
 {
-    public static ArrayList<PVCRecipient> recipients = new ArrayList<PVCRecipient>();
-    static        PVCRecipient            one        = new PVCRecipient(
+    /**
+     *  This ArrayList gets modified whenever a user initiates a search
+     */
+    public static       ArrayList<PVCRecipient> mutableRecipientsList   = new ArrayList<PVCRecipient>();
+    /**
+     * This ArrayList remains immutable throughout the app life cycle.
+     */
+    public static final ArrayList<PVCRecipient> immutableRecipientsList = new ArrayList<PVCRecipient>();
+
+    // Now follows the declaration of each individual PVCRecipient
+    static PVCRecipient one = new PVCRecipient(
         "Major", // Rank
         "Som Nath Sharma", // Name
         "IC-521", // Award Number
@@ -419,28 +430,59 @@ public class Recipients
         R.drawable.captain_vikram_batra // Image
     );
 
-    public static void addRecipients( )
+    /**
+     * Fills the mutableRecipientsList with PVCRecipients
+     */
+    public static void fillMutableRecipientsList( )
     {
-        recipients.add( one );
-        recipients.add( two );
-        recipients.add( three );
-        recipients.add( four );
-        recipients.add( five );
-        recipients.add( six );
-        recipients.add( seven );
-        recipients.add( eight );
-        recipients.add( nine );
-        recipients.add( ten );
-        recipients.add( eleven );
-        recipients.add( twelve );
-        recipients.add( thirteen );
-        recipients.add( fourteen );
-        recipients.add( fifteen );
-        recipients.add( sixteen );
-        recipients.add( seventeen );
-        recipients.add( eighteen );
-        recipients.add( nineteen );
-        recipients.add( twenty );
-        recipients.add( twentyOne );
+        mutableRecipientsList.add( one );
+        mutableRecipientsList.add( two );
+        mutableRecipientsList.add( three );
+        mutableRecipientsList.add( four );
+        mutableRecipientsList.add( five );
+        mutableRecipientsList.add( six );
+        mutableRecipientsList.add( seven );
+        mutableRecipientsList.add( eight );
+        mutableRecipientsList.add( nine );
+        mutableRecipientsList.add( ten );
+        mutableRecipientsList.add( eleven );
+        mutableRecipientsList.add( twelve );
+        mutableRecipientsList.add( thirteen );
+        mutableRecipientsList.add( fourteen );
+        mutableRecipientsList.add( fifteen );
+        mutableRecipientsList.add( sixteen );
+        mutableRecipientsList.add( seventeen );
+        mutableRecipientsList.add( eighteen );
+        mutableRecipientsList.add( nineteen );
+        mutableRecipientsList.add( twenty );
+        mutableRecipientsList.add( twentyOne );
+    }
+
+    /**
+     * Fills the mutableRecipientsList with PVCRecipients
+     */
+    public static void fillImmutableRecipientsList( )
+    {
+        immutableRecipientsList.add( one );
+        immutableRecipientsList.add( two );
+        immutableRecipientsList.add( three );
+        immutableRecipientsList.add( four );
+        immutableRecipientsList.add( five );
+        immutableRecipientsList.add( six );
+        immutableRecipientsList.add( seven );
+        immutableRecipientsList.add( eight );
+        immutableRecipientsList.add( nine );
+        immutableRecipientsList.add( ten );
+        immutableRecipientsList.add( eleven );
+        immutableRecipientsList.add( twelve );
+        immutableRecipientsList.add( thirteen );
+        immutableRecipientsList.add( fourteen );
+        immutableRecipientsList.add( fifteen );
+        immutableRecipientsList.add( sixteen );
+        immutableRecipientsList.add( seventeen );
+        immutableRecipientsList.add( eighteen );
+        immutableRecipientsList.add( nineteen );
+        immutableRecipientsList.add( twenty );
+        immutableRecipientsList.add( twentyOne );
     }
 }

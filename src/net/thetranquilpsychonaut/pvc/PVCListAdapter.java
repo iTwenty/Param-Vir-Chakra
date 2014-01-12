@@ -18,10 +18,14 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
 
     public PVCListAdapter( Context context, int textViewResourceId )
     {
-        super( context, textViewResourceId, Recipients.recipients );
+        // The primary data source is the mutableRecipientsList since we want it to be modified by search queries
+        super( context, textViewResourceId, Recipients.mutableRecipientsList );
         this.ctx = context;
     }
 
+    /**
+     * Denotes all Views inside a single ListRow
+     */
     private class ViewHolder
     {
         ImageView ivThumbnail;
@@ -35,8 +39,9 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
     {
         View view = convertView;
         ViewHolder holder;
-        PVCRecipient recipient = Recipients.recipients.get( position );
+        PVCRecipient recipient = Recipients.mutableRecipientsList.get( position );
         LayoutInflater inflater = ( LayoutInflater ) ctx.getSystemService( Activity.LAYOUT_INFLATER_SERVICE );
+        // If the row has not been initialised before, inflate the layout and populate ViewHolder with inflated Views
         if ( view == null )
         {
             view = inflater.inflate( R.layout.pvc_list_row, null );
@@ -49,8 +54,10 @@ public class PVCListAdapter extends ArrayAdapter<PVCRecipient>
         }
         else
         {
-            holder = ( ViewHolder ) view.getTag();
+            holder = ( ViewHolder ) view.getTag( );
         }
+
+        // Fill in the data for each View in the holder
         holder.tvName.setText( recipient.getRank( ) + " " + recipient.getName( ) );
         holder.tvAwardDate.setText( Helper.formatter.format( recipient.getAwardDate( ).getTime( ) ) );
         holder.ivThumbnail.setImageDrawable( ctx.getResources( ).getDrawable( recipient.getImageID( ) ) );

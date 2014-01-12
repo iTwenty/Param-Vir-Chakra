@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 
 /**
  * Created by itwenty on 1/5/14.
+ * Denotes a single PVCRecipient.
  */
 public class PVCRecipient
 {

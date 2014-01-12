@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by itwenty on 1/7/14.
+ * A helper class containing various constants and static helper functions
  */
 public class Helper
 {
