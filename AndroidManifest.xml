@@ -6,7 +6,7 @@
     <uses-sdk android:minSdkVersion="14"
               android:targetSdkVersion="17"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="PVCListActivity"
+        <activity android:name=".PVCActivity"
                   android:configChanges="orientation|screenSize"
                   android:label="@string/app_name">
             <intent-filter>

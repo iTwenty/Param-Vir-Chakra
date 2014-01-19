@@ -4,8 +4,8 @@ net.thetranquilpsychonaut.pvc.PVCDetailsActivity
 net.thetranquilpsychonaut.pvc.PVCDetailsActivity: PVCDetailsActivity()
 net.thetranquilpsychonaut.pvc.PVCDetailsActivity: void goToNextRecipient(android.view.View)
 net.thetranquilpsychonaut.pvc.PVCDetailsActivity: void goToPreviousRecipient(android.view.View)
-net.thetranquilpsychonaut.pvc.PVCListActivity
-net.thetranquilpsychonaut.pvc.PVCListActivity: PVCListActivity()
+net.thetranquilpsychonaut.pvc.PVCActivity
+net.thetranquilpsychonaut.pvc.PVCActivity: PVCListActivity()
 net.thetranquilpsychonaut.pvc.R$color: int AliceBlue
 net.thetranquilpsychonaut.pvc.R$color: int AntiqueWhite
 net.thetranquilpsychonaut.pvc.R$color: int Aquamarine

@@ -19,7 +19,7 @@ net.thetranquilpsychonaut.pvc.PVCDetailsActivity -> net.thetranquilpsychonaut.pv
     void onCreate(android.os.Bundle) -> onCreate
     void goToNextRecipient(android.view.View) -> goToNextRecipient
     void goToPreviousRecipient(android.view.View) -> goToPreviousRecipient
-net.thetranquilpsychonaut.pvc.PVCListActivity -> net.thetranquilpsychonaut.pvc.PVCListActivity:
+net.thetranquilpsychonaut.pvc.PVCActivity -> net.thetranquilpsychonaut.pvc.PVCActivity:
     android.widget.SearchView svSearchByName -> a
     net.thetranquilpsychonaut.pvc.PVCListAdapter adapter -> b
     void onCreate(android.os.Bundle) -> onCreate
@@ -27,8 +27,8 @@ net.thetranquilpsychonaut.pvc.PVCListActivity -> net.thetranquilpsychonaut.pvc.P
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
     void filter(java.lang.String) -> a
-net.thetranquilpsychonaut.pvc.PVCListActivity$1 -> net.thetranquilpsychonaut.pvc.b:
-    net.thetranquilpsychonaut.pvc.PVCListActivity this$0 -> a
+net.thetranquilpsychonaut.pvc.PVCActivity$1 -> net.thetranquilpsychonaut.pvc.b:
+    net.thetranquilpsychonaut.pvc.PVCActivity this$0 -> a
     boolean onQueryTextSubmit(java.lang.String) -> onQueryTextSubmit
     boolean onQueryTextChange(java.lang.String) -> onQueryTextChange
 net.thetranquilpsychonaut.pvc.PVCListAdapter -> net.thetranquilpsychonaut.pvc.c:
