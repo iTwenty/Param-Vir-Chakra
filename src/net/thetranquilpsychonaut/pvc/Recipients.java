@@ -280,7 +280,7 @@ public class Recipients
 
     static PVCRecipient thirteen = new PVCRecipient(
         "Flying Officer", // Rank
-        "Nirmaljit Sing Sekhon", // Name
+        "Nirmaljit Singh Sekhon", // Name
         "10877 F(P)", // Award Number
         "No.18 Squadron, Indian Air Forcet", //Regiment
         new GregorianCalendar( 1971, Calendar.DECEMBER, 14 ), //Award Date

@@ -1,17 +1,17 @@
 package net.thetranquilpsychonaut.pvc;
 
+import android.annotation.TargetApi;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SearchView;
-
-import java.util.ArrayList;
 
 public class PVCListActivity extends ListActivity
 {
@@ -31,6 +31,7 @@ public class PVCListActivity extends ListActivity
         setContentView( R.layout.pvc_list_activity );
         adapter = new PVCListAdapter( this, R.layout.pvc_list_row );
         setListAdapter( adapter );
+        getListView( ).setTextFilterEnabled( true );
     }
 
     @Override
@@ -38,27 +39,30 @@ public class PVCListActivity extends ListActivity
     {
         MenuInflater mi = getMenuInflater( );
         mi.inflate( R.menu.options_menu, menu );
-        svSearchByName = ( SearchView )menu.findItem( R.id.menu_search ).getActionView( );
-        svSearchByName.setOnQueryTextListener( new SearchView.OnQueryTextListener( )
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB )
         {
-            @Override
-            public boolean onQueryTextSubmit( String query )
+            svSearchByName = ( SearchView )menu.findItem( R.id.menu_search ).getActionView( );
+            svSearchByName.setOnQueryTextListener( new SearchView.OnQueryTextListener( )
             {
-                return false;
-            }
+                @Override
+                public boolean onQueryTextSubmit( String query )
+                {
+                    return false;
+                }
 
-            @Override
-            public boolean onQueryTextChange( String newText )
-            {
-                filter( newText );
-                return true;
-            }
-        } );
+                @Override
+                public boolean onQueryTextChange( String newText )
+                {
+                    filter( newText );
+                    return true;
+                }
+            } );
+        }
         return true;
     }
 
     @Override
-    public boolean onMenuItemSelected( int featureId, MenuItem item )
+    public boolean onOptionsItemSelected( MenuItem item )
     {
         int itemId = item.getItemId( );
         if( itemId == R.id.menu_about )

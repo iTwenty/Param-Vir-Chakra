@@ -1,0 +1,94 @@
+net.thetranquilpsychonaut.pvc.AboutActivity -> net.thetranquilpsychonaut.pvc.AboutActivity:
+    void onCreate(android.os.Bundle) -> onCreate
+net.thetranquilpsychonaut.pvc.Helper -> net.thetranquilpsychonaut.pvc.a:
+    java.lang.String SELECTED_RECIPIENT -> a
+    java.text.SimpleDateFormat formatter -> b
+net.thetranquilpsychonaut.pvc.PVCDetailsActivity -> net.thetranquilpsychonaut.pvc.PVCDetailsActivity:
+    int position -> a
+    net.thetranquilpsychonaut.pvc.PVCRecipient selectedRecipient -> b
+    android.widget.ImageView ivImage -> c
+    android.widget.TextView tvName -> d
+    android.widget.TextView tvBirthDate -> e
+    android.widget.TextView tvDeathDate -> f
+    android.widget.TextView tvBirthPlace -> g
+    android.widget.TextView tvAwardNumber -> h
+    android.widget.TextView tvAwardDate -> i
+    android.widget.TextView tvAwardPlace -> j
+    android.widget.TextView tvRegiment -> k
+    android.widget.TextView tvCitation -> l
+    void onCreate(android.os.Bundle) -> onCreate
+    void goToNextRecipient(android.view.View) -> goToNextRecipient
+    void goToPreviousRecipient(android.view.View) -> goToPreviousRecipient
+net.thetranquilpsychonaut.pvc.PVCListActivity -> net.thetranquilpsychonaut.pvc.PVCListActivity:
+    android.widget.SearchView svSearchByName -> a
+    net.thetranquilpsychonaut.pvc.PVCListAdapter adapter -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    void filter(java.lang.String) -> a
+net.thetranquilpsychonaut.pvc.PVCListActivity$1 -> net.thetranquilpsychonaut.pvc.b:
+    net.thetranquilpsychonaut.pvc.PVCListActivity this$0 -> a
+    boolean onQueryTextSubmit(java.lang.String) -> onQueryTextSubmit
+    boolean onQueryTextChange(java.lang.String) -> onQueryTextChange
+net.thetranquilpsychonaut.pvc.PVCListAdapter -> net.thetranquilpsychonaut.pvc.c:
+    android.content.Context ctx -> a
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+net.thetranquilpsychonaut.pvc.PVCListAdapter$1 -> net.thetranquilpsychonaut.pvc.d:
+net.thetranquilpsychonaut.pvc.PVCListAdapter$ViewHolder -> net.thetranquilpsychonaut.pvc.e:
+    android.widget.ImageView ivThumbnail -> a
+    android.widget.TextView tvName -> b
+    android.widget.TextView tvAwardDate -> c
+    android.widget.TextView tvPosthumous -> d
+    net.thetranquilpsychonaut.pvc.PVCListAdapter this$0 -> e
+net.thetranquilpsychonaut.pvc.PVCRecipient -> net.thetranquilpsychonaut.pvc.f:
+    java.lang.String rank -> a
+    java.lang.String name -> b
+    java.lang.String awardNumber -> c
+    java.lang.String regiment -> d
+    java.util.GregorianCalendar awardDate -> e
+    java.lang.String awardPlace -> f
+    boolean posthumous -> g
+    java.util.GregorianCalendar birthDate -> h
+    java.util.GregorianCalendar deathDate -> i
+    java.lang.String birthPlace -> j
+    java.lang.String citation -> k
+    int imageID -> l
+    java.lang.String getRank() -> a
+    java.lang.String getName() -> b
+    java.util.GregorianCalendar getBirthDate() -> c
+    java.util.GregorianCalendar getDeathDate() -> d
+    java.lang.String getBirthPlace() -> e
+    java.lang.String getAwardNumber() -> f
+    java.lang.String getRegiment() -> g
+    java.util.GregorianCalendar getAwardDate() -> h
+    java.lang.String getAwardPlace() -> i
+    java.lang.String getCitation() -> j
+    boolean isPosthumous() -> k
+    int getImageID() -> l
+net.thetranquilpsychonaut.pvc.Recipients -> net.thetranquilpsychonaut.pvc.g:
+    java.util.ArrayList mutableRecipientsList -> a
+    java.util.ArrayList immutableRecipientsList -> b
+    net.thetranquilpsychonaut.pvc.PVCRecipient one -> c
+    net.thetranquilpsychonaut.pvc.PVCRecipient two -> d
+    net.thetranquilpsychonaut.pvc.PVCRecipient three -> e
+    net.thetranquilpsychonaut.pvc.PVCRecipient four -> f
+    net.thetranquilpsychonaut.pvc.PVCRecipient five -> g
+    net.thetranquilpsychonaut.pvc.PVCRecipient six -> h
+    net.thetranquilpsychonaut.pvc.PVCRecipient seven -> i
+    net.thetranquilpsychonaut.pvc.PVCRecipient eight -> j
+    net.thetranquilpsychonaut.pvc.PVCRecipient nine -> k
+    net.thetranquilpsychonaut.pvc.PVCRecipient ten -> l
+    net.thetranquilpsychonaut.pvc.PVCRecipient eleven -> m
+    net.thetranquilpsychonaut.pvc.PVCRecipient twelve -> n
+    net.thetranquilpsychonaut.pvc.PVCRecipient thirteen -> o
+    net.thetranquilpsychonaut.pvc.PVCRecipient fourteen -> p
+    net.thetranquilpsychonaut.pvc.PVCRecipient fifteen -> q
+    net.thetranquilpsychonaut.pvc.PVCRecipient sixteen -> r
+    net.thetranquilpsychonaut.pvc.PVCRecipient seventeen -> s
+    net.thetranquilpsychonaut.pvc.PVCRecipient eighteen -> t
+    net.thetranquilpsychonaut.pvc.PVCRecipient nineteen -> u
+    net.thetranquilpsychonaut.pvc.PVCRecipient twenty -> v
+    net.thetranquilpsychonaut.pvc.PVCRecipient twentyOne -> w
+    void fillMutableRecipientsList() -> a
+    void fillImmutableRecipientsList() -> b
