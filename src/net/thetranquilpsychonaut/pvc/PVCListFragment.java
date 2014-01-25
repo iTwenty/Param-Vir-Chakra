@@ -1,32 +1,35 @@
 package net.thetranquilpsychonaut.pvc;
 
-import android.app.ListFragment;
 import android.content.Intent;
-import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.*;
+import android.support.v4.app.ListFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.TextView;
 
 /**
  * Created by itwenty on 1/19/14.
  */
-public class PVCListFragment extends ListFragment
+public class PVCListFragment extends ListFragment implements TextWatcher
 {
+    public final static int DEFAULT_SELECTION = 0;
     PVCListAdapter adapter;
-    SearchView              svSearchByName;
-
-    @Override
-    public void onCreate( Bundle savedInstanceState )
-    {
-        super.onCreate( savedInstanceState );
-        setHasOptionsMenu( true );
-    }
+    TextView       tvSearchPVCList;
+    // Needed to highlight/unhighlight rows in listview
+    View           currentSelectedView;
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState )
     {
-        return inflater.inflate( R.layout.fragment_pvc_list, container, false );
+        View v = inflater.inflate( R.layout.fragment_pvc_list, container, false );
+        tvSearchPVCList = ( TextView )v.findViewById( R.id.tv_search_pvc_list );
+        tvSearchPVCList.addTextChangedListener( this );
+        return v;
     }
 
     @Override
@@ -35,15 +38,30 @@ public class PVCListFragment extends ListFragment
         super.onActivityCreated( savedInstanceState );
         adapter = new PVCListAdapter( getActivity( ), R.layout.pvc_list_row );
         setListAdapter( adapter );
+        // Click on first row by default for tablets
+        if( PVCApplication.isMultiPane( ) )
+        {
+            View defaultView = adapter.getView( DEFAULT_SELECTION, null, null );
+            getListView( ).performItemClick( defaultView, DEFAULT_SELECTION, defaultView.getId( ) );
+            changeHighlight( defaultView, true );
+        }
     }
 
     @Override
     public void onListItemClick( ListView l, View v, int mutableListPosition, long id )
     {
-        // The position this method recieves denotes position in mutable list as we have used that as our primary data source.
-        // We need to find position of same PVCRecipient in immutable list so that Prev/Next buttons work as intended in PVCDetailsActivity
-        int immutableListPosition = 0;
+
         super.onListItemClick( l, v, mutableListPosition, id );
+        // If a row is already selected and it is not the currently clicked row, then unhighlight it
+        if( currentSelectedView != null && currentSelectedView != v )
+            changeHighlight( currentSelectedView, false );
+        // Set clicked row as currently selected row
+        currentSelectedView = v;
+        // Highlight currently clicked row
+        changeHighlight( currentSelectedView, true );
+        // The position this method receives denotes position in mutable list
+        // We need to find position of same PVCRecipient in immutable list
+        int immutableListPosition = 0;
         PVCRecipient mutableRecipient = Recipients.mutableRecipientsList.get( mutableListPosition );
         for( PVCRecipient pr : Recipients.immutableRecipientsList )
         {
@@ -53,18 +71,21 @@ public class PVCListFragment extends ListFragment
                 break;
             }
         }
-        Bundle bundle = new Bundle( );
-        bundle.putInt( Helper.SELECTED_RECIPIENT, immutableListPosition );
-        PVCDetailsFragment fragment = ( PVCDetailsFragment )getFragmentManager( ).findFragmentById( R.id.fragment_pvc_details );
-        if( fragment != null && fragment.isInLayout( ) )
+        // We need to pass this immutable position to PVCDetailsFragment
+        Bundle b = new Bundle( );
+        b.putInt( Helper.SELECTED_RECIPIENT, immutableListPosition );
+        // In multipane layout, the fragment is already initialized. Just update the details
+        if( PVCApplication.isMultiPane( ) )
         {
+            PVCDetailsFragment pvcDetailsFragment = ( PVCDetailsFragment )getActivity( ).getSupportFragmentManager( ).findFragmentById( R.id.fragment_pvc_details );
+            pvcDetailsFragment.updateDetails( b );
         }
+        // In single pane layout start a new activity which takes care of displaying details
         else
         {
-            Intent intent = new Intent( getActivity( ), PVCDetailsActivity.class );
-            intent.putExtras( bundle );
-            intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
-            startActivity( intent );
+            Intent i = new Intent( getActivity( ), PVCDetailsActivity.class );
+            i.putExtras( b );
+            startActivity( i );
         }
     }
 
@@ -75,7 +96,7 @@ public class PVCListFragment extends ListFragment
         // If no search query is present, just fill back the whole data source
         if( searchString.length( ) == 0 )
         {
-            Recipients.fillMutableRecipientsList();
+            Recipients.fillMutableRecipientsList( );
         }
         // else only fill those PVCRecipients which match the entered search query
         else
@@ -90,43 +111,28 @@ public class PVCListFragment extends ListFragment
             }
         }
         // Refresh the adapter to show searched list
-        adapter.notifyDataSetChanged( );
+        adapter.notifyDataSetChanged();
+    }
+
+    public void changeHighlight( View v, boolean b )
+    {
+        if( !PVCApplication.isMultiPane( ) )
+            return;
+        v.setBackgroundColor( b ? getResources().getColor( android.R.color.holo_blue_dark ) : Color.TRANSPARENT );
     }
 
     @Override
-    public void onCreateOptionsMenu( Menu menu, MenuInflater inflater )
+    public void afterTextChanged( Editable s )
     {
-        inflater.inflate( R.menu.options_menu, menu );
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB )
-        {
-            svSearchByName = ( SearchView )menu.findItem( R.id.menu_search ).getActionView( );
-            svSearchByName.setOnQueryTextListener( new SearchView.OnQueryTextListener( )
-            {
-                @Override
-                public boolean onQueryTextSubmit( String query )
-                {
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange( String newText )
-                {
-                    filter( newText );
-                    return true;
-                }
-            } );
-        }
+        String searchText = s.toString( ).toLowerCase( );
+        if( currentSelectedView != null )
+            changeHighlight( currentSelectedView, false );
+        filter( searchText );
     }
 
     @Override
-    public boolean onOptionsItemSelected( MenuItem item )
-    {
-        int itemId = item.getItemId( );
-        if( itemId == R.id.menu_about )
-        {
-            Intent aboutIntent = new Intent( getActivity( ), AboutActivity.class );
-            startActivity( aboutIntent );
-        }
-        return true;
-    }
+    public void beforeTextChanged( CharSequence s, int start, int count, int after ) { }
+
+    @Override
+    public void onTextChanged( CharSequence s, int start, int before, int count ) { }
 }

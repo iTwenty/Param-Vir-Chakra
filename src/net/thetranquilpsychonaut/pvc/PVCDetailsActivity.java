@@ -1,90 +1,47 @@
 package net.thetranquilpsychonaut.pvc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * Created by itwenty on 1/8/14.
  */
-public class PVCDetailsActivity extends Activity
+public class PVCDetailsActivity extends FragmentActivity
 {
-    int          position;
-    PVCRecipient selectedRecipient;
-    ImageView    ivImage;
-    TextView     tvName;
-    TextView     tvBirthDate;
-    TextView     tvDeathDate;
-    TextView     tvBirthPlace;
-    TextView     tvAwardNumber;
-    TextView     tvAwardDate;
-    TextView     tvAwardPlace;
-    TextView     tvRegiment;
-    TextView     tvCitation;
+    ViewPager viewPager;
+    PVCDetailsPagerAdapter pvcDetailsPagerAdapter;
 
+    @Override
     public void onCreate( Bundle savedInstanceState )
     {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_pvc_details );
-        Intent intent = getIntent( );
-        position = intent.getExtras( ).getInt( Helper.SELECTED_RECIPIENT );
-        selectedRecipient = Recipients.immutableRecipientsList.get( position );
-        ivImage = (ImageView)findViewById( R.id.iv_image );
-        tvName = (TextView)findViewById( R.id.tv_name );
-        tvBirthDate = (TextView)findViewById( R.id.tv_birth_date );
-        tvDeathDate = (TextView)findViewById( R.id.tv_death_date );
-        tvBirthPlace = (TextView)findViewById( R.id.tv_birth_place );
-        tvAwardNumber = (TextView)findViewById( R.id.tv_award_number );
-        tvAwardDate = (TextView)findViewById( R.id.tv_award_date );
-        tvAwardPlace = (TextView)findViewById( R.id.tv_award_place );
-        tvRegiment = (TextView)findViewById( R.id.tv_regiment );
-        tvCitation = (TextView)findViewById( R.id.tv_citation );
-
-        ivImage.setImageDrawable( this.getResources( ).getDrawable( selectedRecipient.getImageID( ) ) );
-        tvName.setText( selectedRecipient.getRank( ) + " " + selectedRecipient.getName( ) );
-        tvBirthDate.setText(
-            selectedRecipient.getBirthDate( ) != null ?
-                Helper.formatter.format( selectedRecipient.getBirthDate( ).getTime( ) ) :
-                "????" );
-        tvDeathDate.setText(
-            selectedRecipient.getDeathDate( ) != null ?
-                Helper.formatter.format( selectedRecipient.getDeathDate( ).getTime( ) ) :
-                "????" );
-        tvBirthPlace.setText( selectedRecipient.getBirthPlace( ) );
-        tvAwardNumber.setText( selectedRecipient.getAwardNumber( ) );
-        String posthumous = selectedRecipient.isPosthumous( ) ? "(posth.)" : "";
-        tvAwardDate.setText( Helper.formatter.format( selectedRecipient.getAwardDate( ).getTime( ) ) +" " + posthumous );
-        tvAwardPlace.setText( selectedRecipient.getAwardPlace( ) );
-        tvRegiment.setText( selectedRecipient.getRegiment( ) );
-        tvCitation.setText( selectedRecipient.getCitation( ) );
+        viewPager = ( ViewPager )findViewById( R.id.viewpager_pvc_details );
+        pvcDetailsPagerAdapter = new PVCDetailsPagerAdapter( getSupportFragmentManager( ) );
+        viewPager.setAdapter( pvcDetailsPagerAdapter );
+        viewPager.setCurrentItem( getIntent( ).getExtras( ).getInt( Helper.SELECTED_RECIPIENT ) );
     }
 
-    public void goToNextRecipient( View v )
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu )
     {
-        if( position == Recipients.immutableRecipientsList.size( ) - 1 )
-            return;
-        else
-        {
-            Intent intent = new Intent( this, PVCDetailsActivity.class );
-            intent.putExtra( Helper.SELECTED_RECIPIENT, position + 1 );
-            intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
-            startActivity( intent );
-        }
+        getMenuInflater( ).inflate( R.menu.options_menu, menu );
+        return true;
     }
 
-    public void goToPreviousRecipient( View v )
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item )
     {
-        if( position == 0 )
-            return;
-        else
+        int itemId = item.getItemId( );
+        if( itemId == R.id.menu_about )
         {
-            Intent intent = new Intent( this, PVCDetailsActivity.class );
-            intent.putExtra( Helper.SELECTED_RECIPIENT, position - 1 );
-            intent.setFlags( Intent.FLAG_ACTIVITY_NO_HISTORY );
-            startActivity( intent );
+            Intent aboutIntent = new Intent( this, AboutActivity.class );
+            startActivity( aboutIntent );
         }
+        return true;
     }
 }

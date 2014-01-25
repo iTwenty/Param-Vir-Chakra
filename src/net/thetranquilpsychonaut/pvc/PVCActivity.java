@@ -1,28 +1,47 @@
 package net.thetranquilpsychonaut.pvc;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.SearchView;
 
-public class PVCActivity extends Activity
+public class PVCActivity extends FragmentActivity
 {
     @Override
     public void onCreate( Bundle savedInstanceState )
     {
         super.onCreate( savedInstanceState );
-        // Initialise our data sources before doing anything else.
+        setContentView( R.layout.activity_pvc );
+        // Fill our primary data sources
         Recipients.fillMutableRecipientsList( );
         Recipients.fillImmutableRecipientsList( );
-        setContentView( R.layout.activity_pvc );
+    }
+
+    @Override
+    protected void onDestroy( )
+    {
+        super.onDestroy();
+        Recipients.mutableRecipientsList.clear( );
+        Recipients.immutableRecipientsList.clear( );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu )
+    {
+        getMenuInflater( ).inflate( R.menu.options_menu, menu );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item )
+    {
+        int itemId = item.getItemId( );
+        if( itemId == R.id.menu_about )
+        {
+            Intent aboutIntent = new Intent( this, AboutActivity.class );
+            startActivity( aboutIntent );
+        }
+        return true;
     }
 }
